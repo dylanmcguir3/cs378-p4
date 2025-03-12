@@ -21,7 +21,11 @@ const MarsPhotos = () => {
     }
 
     if (camera !== "all") {
-      API_URL +=`&camera=${camera}`;
+      API_URL += `&camera=${camera}`;
+    } else {
+      console.log("API_URL: ", API_URL);
+      console.log("API_URL: ", API_URL.split("&camera=")[0]);
+      API_URL = API_URL.split("&camera=")[0];
     }
 
     try {
@@ -72,7 +76,7 @@ const MarsPhotos = () => {
         <label>
           Select Camera:
           <select value={camera} onChange={(e) => setCamera(e.target.value)}>
-            <option value="">All</option>
+            <option value="all">All</option>
             <option value="fhaz">Front Hazard Avoidance Camera</option>
             <option value="rhaz">Rear Hazard Avoidance Camera</option>
             <option value="navcam">Navigation Camera</option>
